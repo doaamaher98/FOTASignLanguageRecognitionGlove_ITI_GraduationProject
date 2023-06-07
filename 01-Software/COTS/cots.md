@@ -1,0 +1,1 @@
+This COTS : Code on the shelf folder contains the layers and their used modules.
