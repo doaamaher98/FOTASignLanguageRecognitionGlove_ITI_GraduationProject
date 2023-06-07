@@ -1,0 +1,1 @@
+This is HAL layer that abstracts the used hardware to be interfaced with the MCAL layer.

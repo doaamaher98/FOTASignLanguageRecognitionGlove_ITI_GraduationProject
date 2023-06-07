@@ -1,0 +1,1 @@
+This is the MCAL Layer that abstracts the used software peripherals.
