@@ -144,7 +144,7 @@ typedef enum
 typedef enum
 {
 	RCC_enuAFIO_EN=0,
-	RCC_enuGPIOA_EN,
+	RCC_enuGPIOA_EN=2,
 	RCC_enuGPIOB_EN,
 	RCC_enuGPIOC_EN,
 	RCC_enuGPIOD_EN,

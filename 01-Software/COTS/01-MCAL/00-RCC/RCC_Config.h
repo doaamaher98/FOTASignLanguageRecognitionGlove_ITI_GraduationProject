@@ -17,7 +17,7 @@
    3- RCC_enuHSE_RC
    4- RCC_enuPLL
 */
-#define						RCC_SYSCLK_SRC					RCC_enuHSI			
+#define						RCC_SYSCLK_SRC					RCC_enuHSE_CRYSTAL
 
 #if RCC_SYSCLK_SRC == RCC_enuPLL
 	/* ===================== PLL Input Source ===================== */
@@ -28,7 +28,7 @@
 	   3- RCC_enuIN_PLL_HSE
 	*/
 	#define					RCC_PLL_INPUT				RCC_enuIN_PLL_HSI_DIV2
-	
+
 	/* ===================== PLL Multiplication Factor ===================== */
 	/* Options :-
 	   ==========
@@ -51,32 +51,6 @@
 	*/
 	#define					RCC_PLL_FACTOR				RCC_enuPLL1_16
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ===================== APB2 Prescaler ===================== */
