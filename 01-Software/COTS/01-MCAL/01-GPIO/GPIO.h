@@ -12,6 +12,7 @@
 /* ================================================ Preprocessor ================================================ */
 #include "Std_Types.h"
 
+#define					GPIOx_CRL_CLEAR						0x00000000
 
 /* ================================================ User Defined Types ================================================ */
 /* Error Status Type */
@@ -19,7 +20,8 @@ typedef enum
 {
 	GPIO_enuOK=0,
 	GPIO_enuNOK,
-	
+	GPIO_enuInvalidPort,
+	GPIO_enuInvalidPin,
 	
 }GPIO_tenuErrorStatus;
 
@@ -44,13 +46,14 @@ typedef enum
 	GPIO_enuGPIOA=0,
 	GPIO_enuGPIOB,
 	GPIO_enuGPIOC,
+	GPIO_enuNumberOfPorts,
 }GPIO_tenuPorts;
 
 
 /* GPIO 16 Pins = Port */
 typedef enum
 {
-	GPIO_enuPin_0=0b00,
+	GPIO_enuPin_0=0b0000,
 	GPIO_enuPin_1,
 	GPIO_enuPin_2,
 	GPIO_enuPin_3,
@@ -66,6 +69,7 @@ typedef enum
 	GPIO_enuPin_13,
 	GPIO_enuPin_14,
 	GPIO_enuPin_15,
+	GPIO_enuNumberOfPins,
 }GPIO_tenuPins;
 
 
@@ -128,7 +132,7 @@ typedef struct
 /* Return        : Error Status (To ensure function Safety)                                 */
 /* Functionality : Setting Pin Direction (Input or Output)		                  			*/
 /********************************************************************************************/
-GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin, GPIO_tenuPinMode Cpy_u8Mode);
+GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin, u8 Cpy_u8Mode);
 
 
 /********************************************************************************************/
@@ -144,7 +148,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPi
 /* Return        : Pin Value					     		                                */
 /* Functionality : Get Pin Value (High or Low)					                  			*/
 /********************************************************************************************/
-u8 GPIO_enuGetPinValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin);
+u8 GPIO_u8GetPinValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin);
 
 
 
@@ -154,7 +158,7 @@ u8 GPIO_enuGetPinValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin);
 /* Return        : Error Status (To ensure function Safety)                                 */
 /* Functionality : Setting Port Direction (Input or Output)		                  			*/
 /********************************************************************************************/
-GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, u8 Cpy_u8Position, GPIO_tenuPinMode Cpy_u8Mode);
+GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPinState Cpy_u8State, u8 Cpy_u8Mode);
 
 
 /********************************************************************************************/
@@ -162,7 +166,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, u8 Cpy
 /* Return        : Error Status (To ensure function Safety)                                 */
 /* Functionality : Setting Port Value (High or Low)				                  			*/
 /********************************************************************************************/
-GPIO_tenuErrorStatus GPIO_enuSetPortValue (GPIO_tenuPorts Cpy_u8Port, u8 Cpy_u8Position, GPIO_tenuPinState Cpy_u16Value);
+GPIO_tenuErrorStatus GPIO_enuSetPortValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPinState Cpy_u8State, u16 Cpy_u16Value);
  
 
 /********************************************************************************************/
@@ -170,10 +174,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPortValue (GPIO_tenuPorts Cpy_u8Port, u8 Cpy_u8P
 /* Return        : Port Value					     		                                */
 /* Functionality : Get Pin Value (High or Low)					                  			*/
 /********************************************************************************************/
-u16 GPIO_enuGetPortValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPins Cpy_u8Pin);
-
-
-
+u16 GPIO_enuGetPortValue (GPIO_tenuPorts Cpy_u8Port, GPIO_tenuPinState Cpy_u8State);
 
 
 #endif
