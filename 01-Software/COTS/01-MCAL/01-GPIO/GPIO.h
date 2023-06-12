@@ -22,7 +22,7 @@ typedef enum
 	GPIO_enuNOK,
 	GPIO_enuInvalidPort,
 	GPIO_enuInvalidPin,
-	
+	GPIO_enuInvalidPortNumber,
 }GPIO_tenuErrorStatus;
 
 /* Pin States */

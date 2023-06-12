@@ -73,7 +73,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 				if (Cpy_u8Pin <= LOW_PINS)
 				{
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOA]->GPIO_GPIO_CRL;
+					Local_u32Temp = GPIO[GPIO_enuGPIOA]->GPIO_CRL;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -82,7 +82,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOA]->GPIO_GPIO_CRL = Local_u32Temp;
+					GPIO[GPIO_enuGPIOA]->GPIO_CRL = Local_u32Temp;
 				}
 				
 				/* If High Pins (8->15) */
@@ -92,7 +92,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Cpy_u8Pin -= PINS_NUM;
 					
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOA]->GPIO_GPIO_CRH;
+					Local_u32Temp = GPIO[GPIO_enuGPIOA]->GPIO_CRH;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -101,7 +101,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOA]->GPIO_GPIO_CRH = Local_u32Temp;
+					GPIO[GPIO_enuGPIOA]->GPIO_CRH = Local_u32Temp;
 				}
 				break;
 				
@@ -110,7 +110,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 				if (Cpy_u8Pin <= LOW_PINS)
 				{
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOB]->GPIO_GPIO_CRL;
+					Local_u32Temp = GPIO[GPIO_enuGPIOB]->GPIO_CRL;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -119,7 +119,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOB]->GPIO_GPIO_CRL = Local_u32Temp;
+					GPIO[GPIO_enuGPIOB]->GPIO_CRL = Local_u32Temp;
 				}
 				
 				/* If High Pins (8->15) */
@@ -129,7 +129,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Cpy_u8Pin -= PINS_NUM;
 					
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOB]->GPIO_GPIO_CRH;
+					Local_u32Temp = GPIO[GPIO_enuGPIOB]->GPIO_CRH;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -138,7 +138,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOB]->GPIO_GPIO_CRH = Local_u32Temp;
+					GPIO[GPIO_enuGPIOB]->GPIO_CRH = Local_u32Temp;
 				}
 				break;
 				
@@ -147,7 +147,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 				if (Cpy_u8Pin <= LOW_PINS)
 				{
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOC]->GPIO_GPIO_CRL;
+					Local_u32Temp = GPIO[GPIO_enuGPIOC]->GPIO_CRL;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -156,7 +156,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOC]->GPIO_GPIO_CRL = Local_u32Temp;
+					GPIO[GPIO_enuGPIOC]->GPIO_CRL = Local_u32Temp;
 				}
 				
 				/* If High Pins (8->15) */
@@ -166,7 +166,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Cpy_u8Pin -= PINS_NUM;
 					
 					/* Resetting the Register */
-					Local_u32Temp = GPIO[GPIO_enuGPIOC]->GPIO_GPIO_CRH;
+					Local_u32Temp = GPIO[GPIO_enuGPIOC]->GPIO_CRH;
 					
 					/* Clear the Mode */
 					Local_u32Temp &= ~((CLR_LAST_4_BITS_MASK) << (Cpy_u8Pin * PIN_BITS));
@@ -175,7 +175,7 @@ GPIO_tenuErrorStatus GPIO_enuSetPinDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_te
 					Local_u32Temp |= ((Cpy_u8Mode) << (Cpy_u8Pin * PIN_BITS));
 					
 					/* Setting the Value once again in register */
-					GPIO[GPIO_enuGPIOC]->GPIO_GPIO_CRH = Local_u32Temp;
+					GPIO[GPIO_enuGPIOC]->GPIO_CRH = Local_u32Temp;
 				}
 				break;
 				
@@ -311,11 +311,11 @@ GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_t
 			/* ================= Checking Pin State ================= */
 			if (Cpy_u8State == GPIO_enuLOW)
 			{
-				GPIO[GPIO_enuGPIOA]->GPIO_CRL = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOA]->GPIO_CRL = (0x11111111 * Cpy_u8Mode);
 			}
 			else if (Cpy_u8State == GPIO_enuHIGH)
 			{
-				GPIO[GPIO_enuGPIOA]->GPIO_CRH = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOA]->GPIO_CRH = (0x11111111 * Cpy_u8Mode);
 			}
 			break;
 			
@@ -323,11 +323,11 @@ GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_t
 			/* ================= Checking Pin State ================= */
 			if (Cpy_u8State == GPIO_enuLOW)
 			{
-				GPIO[GPIO_enuGPIOB]->GPIO_CRL = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOB]->GPIO_CRL = (0x11111111 * Cpy_u8Mode);
 			}
 			else if (Cpy_u8State == GPIO_enuHIGH)
 			{
-				GPIO[GPIO_enuGPIOB]->GPIO_CRH = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOB]->GPIO_CRH = (0x11111111 * Cpy_u8Mode);
 			}
 			break;
 			
@@ -335,11 +335,11 @@ GPIO_tenuErrorStatus GPIO_enuSetPortDirection (GPIO_tenuPorts Cpy_u8Port, GPIO_t
 			/* ================= Checking Pin State ================= */
 			if (Cpy_u8State == GPIO_enuLOW)
 			{
-				GPIO[GPIO_enuGPIOC]->GPIO_CRL = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOC]->GPIO_CRL = (0x11111111 * Cpy_u8Mode);
 			}
 			else if (Cpy_u8State == GPIO_enuHIGH)
 			{
-				GPIO[GPIO_enuGPIOC]->GPIO_CRH = (0x11111111 * Copy_u8Mode);
+				GPIO[GPIO_enuGPIOC]->GPIO_CRH = (0x11111111 * Cpy_u8Mode);
 			}
 			break;
 			
