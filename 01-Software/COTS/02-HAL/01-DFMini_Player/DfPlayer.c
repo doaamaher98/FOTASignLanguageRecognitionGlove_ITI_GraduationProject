@@ -16,7 +16,7 @@
 
 static u8 Command_Array[10];
 
-
+ 
 static u16 DFP_Checksum(void)
 {
 	u16 checksum = 0;
