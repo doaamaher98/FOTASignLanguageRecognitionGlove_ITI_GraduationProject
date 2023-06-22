@@ -1,8 +1,8 @@
 /******************************************************************************************************************************************
- * Module:      ADC                                                                                                                        *
- * File Name:   ADC.c                                                                                                                      *
- * Description: Source file include implementation of ADC driver Functions                                                                 *                                                                                                          *
- ******************************************************************************************************************************************/
+* Module:      ADC                                                                                                                        *
+* File Name:   ADC.c                                                                                                                      *
+* Description: Source file include implementation of ADC driver Functions                                                                 *                                                                                                          *
+******************************************************************************************************************************************/
 
 /*=============================================================== INCLUDE ===============================================================*/
 
@@ -12,6 +12,8 @@
 
 /*=============================================================== DEFINE ================================================================*/
 
+/*NULL POINTER*/
+#define NULL_PTR    ((void*)0)
 
 /*================================================================ TYPES ================================================================*/
 /* ADC_REGISTERS */
@@ -81,121 +83,121 @@ void ADC_vidSingleChannelInit(u32* Copy_u32ADC_Num, u8 Copy_u8Channel)
 	/* Set Continuous conversion */
 	((ADC_strReg_t*) Copy_u32ADC_Num)->ADC_CR2 |= 2;
 }
-/*=========================================*/
+                                               /*=========================================*/
+
 ADC_enuErrorStatus_t ADC_enuMultiChannelInit(u32* Add_u32ADC_Num, u8 Copy_u8FirstChannel)
 {
 	ADC_enuErrorStatus_t Loc_enuErrorStatus = ADC_enuOk;
-
-	if( (Add_u32ADC_Num != ADC1) || (Add_u32ADC_Num != ADC2) || (Add_u32ADC_Num != ADC3) )
+	if( (Add_u32ADC_Num != ADC1) && (Add_u32ADC_Num != ADC2) && (Add_u32ADC_Num != ADC3) )
 	{
 		Loc_enuErrorStatus = ADC_enuNOk;
 	}
-	else
-	{
-		/* Clear All CR2 */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2  = 0;
+    else
+    {
+    	/* Clear All CR2 */
+    		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2  = 0;
 
-		/* ADC ON */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 1;
+    		/* ADC ON */
+    		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 1;
 
-		/* wait for stability */
-		_delay_ms(100);
+    		/* wait for stability */
+    		_delay_ms(100);
 
-		/* Set Number of first Channel of ADC */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SQR3 = Copy_u8FirstChannel;
+    		/* Set Number of first Channel of ADC */
+    		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SQR3 = Copy_u8FirstChannel;
 
-		/* Set Continuous conversion */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 2;
+    		/* Set Continuous conversion */
+    		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 2;
 
-		/* ADC ON again */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 1;
-	}
+    		/* ADC ON again */
+    		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_CR2 |= 1;
+    }
 
-	return Loc_enuErrorStatus;
+    return Loc_enuErrorStatus;
 
 }
-/*=========================================*/
+
+                                                   /*=========================================*/
+
 ADC_enuErrorStatus_t ADC_enuSetNextChannel(u32* Add_u32ADC_Num, u8 Copy_u8NextChannel)
 {
 	ADC_enuErrorStatus_t Loc_enuErrorStatus = ADC_enuOk;
 
-	if( (Add_u32ADC_Num != ADC1) || (Add_u32ADC_Num != ADC2) || (Add_u32ADC_Num != ADC3) )
+	if( (Add_u32ADC_Num != ADC1) && (Add_u32ADC_Num != ADC2) && (Add_u32ADC_Num != ADC3) )
 	{
 		Loc_enuErrorStatus = ADC_enuNOk;
 	}
-	else
-	{
-		/* Set Number of Next Channel of ADC */
-		((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SQR3 = Copy_u8NextChannel;
-	}
+    else
+    {
+    	/* Set Number of Next Channel of ADC */
+    	((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SQR3 = Copy_u8NextChannel;
+    }
 
-	return Loc_enuErrorStatus;
+    return Loc_enuErrorStatus;
 }
-/*=========================================*/
+                                                   /*=========================================*/
 ADC_enuErrorStatus_t ADC_enuSingleChannelCheck(u32* Add_u32ADC_Num, u8 * Add_pu8Check )
 {
 	ADC_enuErrorStatus_t Loc_enuErrorStatus = ADC_enuOk;
 
-	if( (Add_u32ADC_Num != ADC1) || (Add_u32ADC_Num != ADC2) || (Add_u32ADC_Num != ADC3) )
+	if( (Add_u32ADC_Num != ADC1) && (Add_u32ADC_Num != ADC2) && (Add_u32ADC_Num != ADC3) )
 	{
 		Loc_enuErrorStatus = ADC_enuNOk;
 	}
-	else
-	{
-		/* Check Flag of EOC */
-		if(((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SR & 2)
-		{
-			*Add_pu8Check = 1;
-		}
-		else
-		{
-			*Add_pu8Check= 0;
-		}
-	}
+    else
+    {
+    	/* Check Flag of EOC */
+    	if(((ADC_strReg_t*) Add_u32ADC_Num)->ADC_SR & 2)
+    	{
+    		*Add_pu8Check = 1;
+    	}
+    	else
+    	{
+    		*Add_pu8Check= 0;
+    	}
+    }
 
-	return Loc_enuErrorStatus;
+    return Loc_enuErrorStatus;
 }
-/*=========================================*/
+                                                   /*=========================================*/
 ADC_enuErrorStatus_t ADC_enuSingleChannelRX(u32* Add_u32ADC_Num, u16 * Add_pu16Data)
 {
 	ADC_enuErrorStatus_t Loc_enuErrorStatus = ADC_enuOk;
 	u16 Loc_u16Data = 0;
 
-	if( (Add_u32ADC_Num != ADC1) || (Add_u32ADC_Num != ADC2) || (Add_u32ADC_Num != ADC3) )
+	if( (Add_u32ADC_Num != ADC1) && (Add_u32ADC_Num != ADC2) && (Add_u32ADC_Num != ADC3) )
 	{
 		Loc_enuErrorStatus = ADC_enuNOk;
 	}
 
 	else if( Add_pu16Data == NULL_PTR)
-	{
-		Loc_enuErrorStatus = ADC_enuNULLPTR;
-	}
-	else
-	{
-		/* Read Data of ADC from DR Register */
-		Loc_u16Data = ((ADC_strReg_t*) Add_u32ADC_Num)->ADC_DR;
+    {
+    	 Loc_enuErrorStatus = ADC_enuNULLPTR;
+    }
+    else
+    {
+    	/* Read Data of ADC from DR Register */
+    	Loc_u16Data = ((ADC_strReg_t*) Add_u32ADC_Num)->ADC_DR;
 
-		/* range of value of ADC of 3.3v (0 : 985), and of 5v(0 : 1000) */
-		/* If you want to set range from(0 : 4035)(resolution 12 bits)of 3.3v or from(0 : 4095)(resolution 12 bits)of 5v, you don't need this equation */
-		*Add_pu16Data  = (Loc_u16Data*1000)/0xfff;
-	}
+    	/* range of value of ADC of 3.3v (0 : 985), and of 5v(0 : 1000) */
+    	/* If you want to set range from(0 : 4035)(resolution 12 bits)of 3.3v or from(0 : 4095)(resolution 12 bits)of 5v, you don't need this equation */
+    	*Add_pu16Data  = (Loc_u16Data*1000)/0xfff;
+    }
 
-	return Loc_enuErrorStatus;
+    return Loc_enuErrorStatus;
 }
-/*=========================================*/
+                                                   /*=========================================*/
+
 ADC_enuErrorStatus_t ADC_enuMultiChannel_RX(u32* Add_u32ADC_Num, u8 Copy_u8Channels , u8 * Copy_pu8AdcChannels , u16 * Copy_pu16AnalogRX)
 {
 	ADC_enuErrorStatus_t Loc_enuErrorStatus = ADC_enuOk;
-
 	u16 Loc_u16TempRX = 0;
 	u8 Loc_u8Counter  = 0;
 	u8 Loc_pu8Check = 0;
-
 	while (1)
 	{
 		/* Check Flag of EOC */
 		Loc_enuErrorStatus = ADC_enuSingleChannelCheck(Add_u32ADC_Num, &Loc_pu8Check );
-
 		if(Loc_pu8Check)
 		{
 			/* Read Data of ADC from DR Register */
